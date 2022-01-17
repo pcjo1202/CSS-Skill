@@ -1,9 +1,14 @@
 import './App.css'
 
-function App () {
+import React from 'react'
+import { GlobalStyle } from './styles/GlobalStyles'
+import ContextMenu from './components/ContextMenu/ContextMenu'
+
+const App = () => {
   return (
-    <div className='App'>
-      {}
+    <div>
+      <GlobalStyle />
+      <ContextMenu />
     </div>
   )
 }
