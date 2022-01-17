@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# CSS skill
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+언젠가 유용하게 사용 할 수 도 있는 스킬이니까 해놓으면 좋지 않을까?
 
-## Available Scripts
+## 사용한 기술
 
-In the project directory, you can run:
+- React
+- styled-components
 
-### `yarn start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 1. Context Menu
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> 💡 마우스 우클릭 시 나오는 'contextmenu'를 내맘대로 디자인하고 구연함.
 
-### `yarn test`
+### ✦ Skill Idea
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **위치좌표 가져오기**
 
-### `yarn build`
+  - <code>offsetX,Y</code> : **event 대상 객체**에서 상대적 좌표 위치를 반환함
+  - <code>ClientX,Y</code> : 브라우저 페이지에서의 보이는 화면 기준으로 좌표의 위치를 반환 (스크롤은 무시하고 왼쪽 상단을 0으로 측정)
+  - <code>PageX,Y</code> : ClientX,Y 와 같으나 스크롤까지 포함 계산
+  - <code>screenX,Y</code> : 보고있는 모니터 기준으로 좌표를 측정(절대좌표)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Element의 크기 가져오기**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - <code>window.innerWidth/height</code> : 브라우저 안에 나오는 순수한 window의 크기
+  - <code>offsetWidth/height</code> : 해당 문서의 크기 (padding, border, scrollbar 포함)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **화면에서 숨기는 CSS 속성**
+  - <code>pointer-events</code> : 이벤트를 사용할 수 있는지 여부를 지정해주는 속성 ('none', 'auto')
+  - <code>visibility</code> : Element가 화면에 보여지는지에 대한 속성 ('visible', 'hidden', 'collapse')
 
-### `yarn eject`
+### ✦ 순서리스트
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. 전체 문서인 document에 event를 준다.
+2. "contextMenu"의 position을 absolute로 지정하여 자유롭게 한다.
+3. 마우스 우클릭 시 클릭한 부분의 좌표를 offest으로 받아오고 그것을 기준으로 "contextMenu"의 위치를 표현하고, 화면에 나타나게 한다.
+4. "contextMenu"가 화면 밖으로 삐저나갈때를 생각하여 기준선 **(window의 크기 - contextMenu의 크기)**을 잡고, 기준선을 넘어가면 좌표의 위치를 기준선을 넘어간 만큼 이동시켜 조정한다.
